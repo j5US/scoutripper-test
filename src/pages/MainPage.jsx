@@ -635,7 +635,7 @@ const MainPage = () => {
             <div
               className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-full border-[#85D4D6] cursor-pointer"
               onClick={() =>
-                window.open("https://trekgenie.scoutripper.com/", "_blank")
+                window.open("https://www.scoutripper.com/trekgenie/", "_blank")
               }
             >
               <p className="text-xs sm:text-sm font-semibold text-header-main">
@@ -646,7 +646,7 @@ const MainPage = () => {
             <div
               className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-full border-[#85D4D6] cursor-pointer"
               onClick={() =>
-                window.open("https://comparetreks.scoutripper.com/", "_blank")
+                window.open("https://scoutripper.com/compare-treks/", "_blank")
               }
             >
               <p className="text-xs sm:text-sm font-semibold text-header-main">
