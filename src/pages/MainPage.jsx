@@ -388,7 +388,7 @@ const MainPage = () => {
           )}
           <div className="max-w-4xl w-full flex flex-col justify-center items-center flex-grow">
             <h1 className="font-bold text-2xl sm:text-3xl text-header-main pt-5 pb-2 text-start sm:text-center">
-              Check Your BMI & Find the Perfect Trek for You!
+              Check Your BMI & Find the Perfect Trek for You! Test
             </h1>
             <h3 className="font-normal text-base text-gray-500 pb-4 sm:pb-10 text-start sm:text-center">
               Explain what BMI is and why it matters for trekking.
