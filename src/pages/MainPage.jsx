@@ -571,7 +571,7 @@ const MainPage = () => {
                     className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowTips(true)}
                   >
-                    <p className="text-xs font-medium text-[#8E9EAB]">Tips</p>
+                    <p className="text-sm font-medium text-[#8E9EAB]">Tips</p>
                     <LuExpand className="text-[#8E9EAB] h-3" />
                   </div>
                   <div
