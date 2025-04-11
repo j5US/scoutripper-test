@@ -358,7 +358,7 @@ const MainPage = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          `https://review.scoutripper.com/api/search_track.php?limit=1000`
+          `https://scoutripper.com/api/search_track?limit=500`
         );
         setAllSuggestions(response.data.data || []);
       } catch (error) {
