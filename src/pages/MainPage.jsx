@@ -13,6 +13,8 @@ import Height from "../assets/height.svg";
 import Weight from "../assets/weight.svg";
 import Info from "../assets/info.svg";
 import Link from "../assets/link.svg";
+import MotionElement from "../components/MotionElement";
+import LoaderScoutripper from "../ui/LoaderScoutripper";
 
 const getDifficultySVG = (grade, small) => {
   switch (grade) {
@@ -179,26 +181,26 @@ const getDifficultySVG = (grade, small) => {
               fill="#F2F4F5"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M15.9904 19.9263C15.8205 20.8221 15.7312 21.7485 15.7312 22.6983C15.7312 25.915 16.7565 28.8841 18.4986 31.3074L14.0576 34.5001C11.669 31.1775 10.2617 27.0982 10.2617 22.6983C10.2617 21.4047 10.3834 20.1371 10.6168 18.9069L15.9904 19.9263Z"
               fill="#F2F4F5"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M29.5726 7.95904C24.4093 8.27745 19.9561 11.2525 17.5739 15.5471C17.1286 16.3499 16.7563 17.198 16.4655 18.0826L11.2695 16.3748C11.6691 15.1592 12.1804 13.9948 12.7911 12.8939C16.0468 7.02467 22.1432 2.93733 29.2359 2.49994L29.5726 7.95904Z"
               fill="#F2F4F5"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M45.0057 19.9263C45.1756 20.8221 45.2649 21.7485 45.2649 22.6983C45.2649 25.915 44.2396 28.8841 42.4975 31.3074L46.9384 34.5001C49.3271 31.1775 50.7344 27.0982 50.7344 22.6983C50.7344 21.4047 50.6127 20.1371 50.3793 18.9069L45.0057 19.9263Z"
               fill="#F2F4F5"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M31.4196 7.95904C36.5829 8.27745 41.0361 11.2525 43.4183 15.5471C43.8636 16.3499 44.2359 17.198 44.5267 18.0826L49.7227 16.3748C49.3231 15.1592 48.8118 13.9948 48.2011 12.8939C44.9454 7.02467 38.849 2.93733 31.7562 2.49994L31.4196 7.95904Z"
               fill="#F2F4F5"
             />
@@ -305,7 +307,7 @@ const MainPage = () => {
     } else {
       setBmi(
         (weightImperial * 0.453592) /
-          (heightImperialFeet * 0.3048 + heightImperialInches * 0.0254) ** 2
+        (heightImperialFeet * 0.3048 + heightImperialInches * 0.0254) ** 2
       );
     }
 
@@ -373,6 +375,8 @@ const MainPage = () => {
     return () => clearTimeout(delayDebounceFn);
   }, []);
 
+  if(allSuggestions.length === 0) return <LoaderScoutripper/>
+
   return (
     <div className="min-h-screen">
       <div>
@@ -387,31 +391,29 @@ const MainPage = () => {
             </div>
           )}
           <div className="max-w-4xl w-full flex flex-col justify-center items-center flex-grow">
-            <h1 className="font-bold text-2xl sm:text-3xl text-header-main pt-5 pb-2 text-start sm:text-center">
+            <MotionElement component="h1" delay={0.4} className="font-bold text-2xl sm:text-3xl text-header-main pt-5 pb-2 text-start sm:text-center">
               Check Your BMI & Find the Perfect Trek for You!
-            </h1>
-            <h3 className="font-normal text-base text-gray-500 pb-4 sm:pb-10 text-start sm:text-center">
+            </MotionElement>
+            <MotionElement component="h3" delay={0.45} className="font-normal text-base text-gray-500 pb-4 sm:pb-10 text-start sm:text-center">
               Explain what BMI is and why it matters for trekking.
-            </h3>
-            <div className="w-full flex flex-col sm:flex-row justify-center items-center border border-[#F3F3F3] rounded-md my-4">
+            </MotionElement>
+            <MotionElement component="div" delay={0.5} className="w-full flex flex-col sm:flex-row justify-center items-center border border-[#F3F3F3] rounded-md my-4">
               <div className="w-full sm:w-[55%] flex flex-col justify-center items-center p-6">
                 <div className="w-full flex flex-row justify-center items-center bg-[#85D4D6]/10 rounded-md p-2 mb-5">
                   <div
-                    className={`w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${
-                      unit === "metric"
+                    className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "metric"
                         ? "bg-footer-main text-white"
                         : "text-[#8E9EAB]"
-                    }`}
+                      }`}
                     onClick={() => setUnit("metric")}
                   >
                     Metric
                   </div>
                   <div
-                    className={`w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${
-                      unit === "imperial"
+                    className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "imperial"
                         ? "bg-footer-main text-white"
                         : "text-[#8E9EAB]"
-                    }`}
+                      }`}
                     onClick={() => setUnit("imperial")}
                   >
                     Imperial
@@ -529,17 +531,16 @@ const MainPage = () => {
                   </div>
                 </div>
                 <div
-                  className={`w-full flex flex-row justify-center items-center gap-2 ${
-                    bmiCategory === "Underweight"
+                  className={`w-full flex flex-row justify-center items-center gap-2 ${bmiCategory === "Underweight"
                       ? "text-[#3B86ED]"
                       : bmiCategory === "Normal weight"
-                      ? "text-[#28BF70]"
-                      : bmiCategory === "Overweight"
-                      ? "text-[#F7C636]"
-                      : bmiCategory === "Obese"
-                      ? "text-[#EB4846]"
-                      : "text-header-main"
-                  }`}
+                        ? "text-[#28BF70]"
+                        : bmiCategory === "Overweight"
+                          ? "text-[#F7C636]"
+                          : bmiCategory === "Obese"
+                            ? "text-[#EB4846]"
+                            : "text-header-main"
+                    }`}
                 >
                   <p className="text-4xl font-bold text-primary-main">
                     {bmi ? bmi.toFixed(1) : "-"}
@@ -571,14 +572,14 @@ const MainPage = () => {
                     className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowTips(true)}
                   >
-                    <p className="text-sm font-medium text-[#8E9EAB]">Tips</p>
+                    <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">Tips</p>
                     <LuExpand className="text-[#8E9EAB] h-3" />
                   </div>
                   <div
                     className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowDetails(true)}
                   >
-                    <p className="text-xs font-medium text-[#8E9EAB]">
+                    <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">
                       Show more details
                     </p>
                     <LuExpand className="text-[#8E9EAB] h-3" />
@@ -590,11 +591,11 @@ const MainPage = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="w-full flex flex-col justify-center items-center my-6 gap-6">
-              <h3 className="font-medium text-base text-gray-500 text-center">
+            </MotionElement>
+            <MotionElement component="div" delay={0.55} className="w-full flex flex-col justify-center items-center my-6 gap-6">
+              <div className="font-medium text-base text-gray-500 text-center">
                 Calculate BMI to view trek suggestions:
-              </h3>
+              </div>
               {allSuggestions.length > 0 && (
                 <>
                   <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-6">
@@ -629,11 +630,11 @@ const MainPage = () => {
                   </div>
                 </>
               )}
-            </div>
+            </MotionElement>
           </div>
           <div className="w-full flex flex-row justify-center items-center gap-4 py-6 border-t border-[#D9D9D9] max-w-6xl">
             <div
-              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-full border-[#85D4D6] cursor-pointer"
+              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-lg border-footer-main cursor-pointer"
               onClick={() =>
                 window.open("https://www.scoutripper.com/trekgenie/", "_blank")
               }
@@ -644,7 +645,7 @@ const MainPage = () => {
               <img src={Link} alt="Link" className="h-3" />
             </div>
             <div
-              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-full border-[#85D4D6] cursor-pointer"
+              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-lg border-footer-main cursor-pointer"
               onClick={() =>
                 window.open("https://scoutripper.com/compare-treks/", "_blank")
               }
@@ -661,7 +662,7 @@ const MainPage = () => {
         </div>
         {showDetails && !isMobile && (
           <div className="fixed top-0 left-0 z-50 w-full h-full bg-[#00393C]/23 flex justify-center items-center">
-            <div className="w-full max-w-3xl bg-white p-6 rounded-lg">
+            <MotionElement component="div" delay={0.05} duration={0.7} className="w-full max-w-3xl bg-white p-6 rounded-lg">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   What is BMI?
@@ -711,12 +712,12 @@ const MainPage = () => {
                   assessment.
                 </p>
               </div>
-            </div>
+            </MotionElement>
           </div>
         )}
         {showDetails && isMobile && (
           <div className="fixed inset-0 flex items-end justify-center bg-[#00393C]/23 bg-opacity-50 z-50">
-            <div className="w-full max-w-3xl bg-white p-6 rounded-lg">
+            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-white p-6 rounded-lg">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   What is BMI?
@@ -766,12 +767,12 @@ const MainPage = () => {
                   assessment.
                 </p>
               </div>
-            </div>
+            </MotionElement>
           </div>
         )}
         {showTips && !isMobile && (
           <div className="fixed top-0 left-0 z-50 w-full h-full bg-[#00393C]/23 flex justify-center items-center">
-            <div className="w-fit max-w-3xl bg-white p-6 rounded-lg">
+            <MotionElement component="div" delay={0.05} duration={0.7} className="w-fit max-w-3xl bg-white p-6 rounded-lg ">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   Tips To Consider
@@ -874,12 +875,12 @@ const MainPage = () => {
                   assessment.
                 </p>
               </div>
-            </div>
+            </MotionElement>
           </div>
         )}
         {showTips && isMobile && (
           <div className="fixed inset-0 flex items-end justify-center bg-[#00393C]/23 bg-opacity-50 z-50">
-            <div className="w-full max-w-3xl bg-white p-6 rounded-lg max-h-[90vh] overflow-y-auto">
+            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-white p-6 rounded-lg max-h-[90vh] overflow-y-auto">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   Tips To Consider
@@ -980,7 +981,7 @@ const MainPage = () => {
                   assessment.
                 </p>
               </div>
-            </div>
+            </MotionElement>
           </div>
         )}
       </div>

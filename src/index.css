@@ -3,7 +3,8 @@
 @theme {
   --font-ibm: "IBM Plex Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
   --color-header-main: #324b4c;
-  --color-footer-main: #85d4d6;
+  --color-footer-main: #4EC5C1;
+  /* --color-footer-main: #85d4d6; */
   --color-footer-hover: #0b58ca;
   --color-side-line-big: #e1f7f7;
 }
