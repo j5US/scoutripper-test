@@ -374,7 +374,7 @@ const MainPage = () => {
     return () => clearTimeout(delayDebounceFn);
   }, []);
 
-  if(allSuggestions.length === 0) return <LoaderScoutripper/>
+  if (allSuggestions.length === 0) return <LoaderScoutripper />
 
   return (
     <div className="min-h-screen">
@@ -401,8 +401,8 @@ const MainPage = () => {
                 <div className="w-full flex flex-row justify-center items-center bg-[#85D4D6]/10 rounded-md p-2 mb-5">
                   <div
                     className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "metric"
-                        ? "bg-footer-main text-white"
-                        : "text-[#8E9EAB]"
+                      ? "bg-footer-main text-white"
+                      : "text-[#8E9EAB]"
                       }`}
                     onClick={() => setUnit("metric")}
                   >
@@ -410,8 +410,8 @@ const MainPage = () => {
                   </div>
                   <div
                     className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "imperial"
-                        ? "bg-footer-main text-white"
-                        : "text-[#8E9EAB]"
+                      ? "bg-footer-main text-white"
+                      : "text-[#8E9EAB]"
                       }`}
                     onClick={() => setUnit("imperial")}
                   >
@@ -531,14 +531,14 @@ const MainPage = () => {
                 </div>
                 <div
                   className={`w-full flex flex-row justify-center items-center gap-2 ${bmiCategory === "Underweight"
-                      ? "text-[#3B86ED]"
-                      : bmiCategory === "Normal weight"
-                        ? "text-[#28BF70]"
-                        : bmiCategory === "Overweight"
-                          ? "text-[#F7C636]"
-                          : bmiCategory === "Obese"
-                            ? "text-[#EB4846]"
-                            : "text-header-main"
+                    ? "text-[#3B86ED]"
+                    : bmiCategory === "Normal weight"
+                      ? "text-[#28BF70]"
+                      : bmiCategory === "Overweight"
+                        ? "text-[#F7C636]"
+                        : bmiCategory === "Obese"
+                          ? "text-[#EB4846]"
+                          : "text-header-main"
                     }`}
                 >
                   <p className="text-4xl font-bold text-primary-main">
@@ -568,14 +568,14 @@ const MainPage = () => {
                 </div>
                 <div className="mt-4 w-full flex flex-row justify-between items-center gap-3.5">
                   <div
-                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] p-2 rounded-sm cursor-pointer"
+                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowTips(true)}
                   >
                     <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">Tips</p>
                     <LuExpand className="text-[#8E9EAB] h-3" />
                   </div>
                   <div
-                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] p-2 rounded-sm cursor-pointer"
+                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowDetails(true)}
                   >
                     <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">
@@ -739,19 +739,25 @@ const MainPage = () => {
                   Why is BMI Important for Trekking?
                 </h1>
                 <div className="flex flex-row justify-start items-center gap-5 mt-3">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Helps determine fitness level for trekking.
                   </p>
                 </div>
                 <div className="flex flex-row justify-start items-center gap-5 mt-2">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Guides in choosing suitable trek difficulty levels.
                   </p>
                 </div>
                 <div className="flex flex-row justify-start items-center gap-5 mt-2">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Aids in planning nutrition & fitness training for better
                     endurance.
@@ -953,20 +959,26 @@ const MainPage = () => {
                   Recommendations:
                 </h1>
                 <div className="flex flex-row justify-start items-center gap-5 mt-3">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Consider consulting with a healthcare provider about healthy
                     weight gain strategies.
                   </p>
                 </div>
                 <div className="flex flex-row justify-start items-center gap-5 mt-2">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Focus on nutrient-rich foods to increase caloric intake.
                   </p>
                 </div>
                 <div className="flex flex-row justify-start items-center gap-5 mt-2">
-                  <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  <span className="size-4">
+                    <IoCheckmarkCircleOutline className="text-header-main h-4" />
+                  </span>
                   <p className="text-sm font-medium text-header-main">
                     Include strength training to build muscle mass.
                   </p>
