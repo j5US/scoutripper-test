@@ -1,23 +1,8 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "dist"
+    "rewrites": [
+        {
+            "source": "/:match*",
+            "destination": "/index.html"
         }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/bmicalc/assets/(.*)",
-        "dest": "/dist/assets/$1"
-      },
-      {
-        "src": "/bmicalc/(.*)",
-        "dest": "/dist/index.html"
-      }
     ]
-  }
-  
+}
