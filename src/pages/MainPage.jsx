@@ -258,7 +258,6 @@ const CompareCard = ({ name, image, state, difficulty }) => {
 
 const MainPage = () => {
   const isMobile = window.innerWidth < 768;
-  const currentYear = new Date().getFullYear();
 
   const [unit, setUnit] = useState("metric");
   const [heightMetric, setHeightMetric] = useState(0);
