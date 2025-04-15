@@ -409,7 +409,7 @@ const MainPage = () => {
             <MotionElement component="h3" delay={0.45} className="font-normal text-base text-accent-secondary pb-4 sm:pb-10 text-start sm:text-center">
               Explain what BMI is and why it matters for trekking.
             </MotionElement>
-            <MotionElement component="div" delay={0.5} className="bg-setting-calc w-full flex flex-col sm:flex-row justify-center items-center border border-calc-bound rounded-md my-4">
+            <MotionElement component="div" delay={0.5} className="bg-setting-calc shadow-sm shadow-gray-700/3 w-full flex flex-col sm:flex-row justify-center items-center border border-calc-bound rounded-md my-4">
               <div className="w-full sm:w-[55%] flex flex-col justify-center items-center p-6">
                 <div className="w-full flex flex-row justify-center items-center bg-footer-main/9 rounded-md p-2 mb-5">
                   <div
