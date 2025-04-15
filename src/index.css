@@ -64,6 +64,10 @@ html {
   --note-bound: #77878f;
 
   --calc-divider: #D9D9D9;
+
+  --grade-empty: #D4EAE2;
+  --grade-pointer: #00393C;
+  --grade-point: #00393C;
 }
 
 .dark-mode {
@@ -93,6 +97,9 @@ html {
 
   --calc-divider: #f3f3f324;
 
+  --grade-empty: #1a3b3b;
+  --grade-pointer: #ffffff;
+  --grade-point: #375253;
 }
 
 @theme inline {
@@ -119,6 +126,8 @@ html {
   --color-note-bound: var(--note-bound);
   --color-calc-divider: var(--calc-divider);
 
+  --color-grade-empty: var(--grade-empty);
+  --color-grade-pointer: var(--grade-pointer);
 }
 
 /* Chrome, Safari, Edge, Opera */
