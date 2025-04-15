@@ -9,12 +9,19 @@ import Footer from "../components/Footer";
 
 import Logo from "../assets/wordlogo.svg";
 import Close from "../assets/close.svg";
-import Height from "../assets/height.svg";
-import Weight from "../assets/weight.svg";
+// import Height from "../assets/height.svg";
+// import Weight from "../assets/weight.svg";
+import Weight from "../ui/Weight"
+import Height from "../ui/Height"
 import Info from "../assets/info.svg";
 import Link from "../assets/link.svg";
 import MotionElement from "../components/MotionElement";
 import LoaderScoutripper from "../ui/LoaderScoutripper";
+import DarkModeToggle from "../components/DarkModeToggle";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { useDarkMode } from "../context/DarkModeContext";
+import LightLogo from "../assets/Scoutripper-Logo.png"
+import DarkLogo from "../assets/Scoutripper-Logo-White.png"
 
 const getDifficultySVG = (grade, small) => {
   switch (grade) {
@@ -178,31 +185,31 @@ const getDifficultySVG = (grade, small) => {
           >
             <path
               d="M22.5117 14.7797L34.2571 28.1373C35.2198 29.8047 34.639 31.9469 32.9716 32.9095C31.3042 33.872 29.1619 33.2913 28.1994 31.6239L22.5117 14.7784V14.7797Z"
-              fill="#F2F4F5"
+              fill="var(--img-fill-in)"
             />
             <path
               fillRule="evenodd"
               clipRule="evenodd"
               d="M15.9904 19.9263C15.8205 20.8221 15.7312 21.7485 15.7312 22.6983C15.7312 25.915 16.7565 28.8841 18.4986 31.3074L14.0576 34.5001C11.669 31.1775 10.2617 27.0982 10.2617 22.6983C10.2617 21.4047 10.3834 20.1371 10.6168 18.9069L15.9904 19.9263Z"
-              fill="#F2F4F5"
+              fill="var(--img-fill-in)"
             />
             <path
               fillRule="evenodd"
               clipRule="evenodd"
               d="M29.5726 7.95904C24.4093 8.27745 19.9561 11.2525 17.5739 15.5471C17.1286 16.3499 16.7563 17.198 16.4655 18.0826L11.2695 16.3748C11.6691 15.1592 12.1804 13.9948 12.7911 12.8939C16.0468 7.02467 22.1432 2.93733 29.2359 2.49994L29.5726 7.95904Z"
-              fill="#F2F4F5"
+              fill="var(--img-fill-in)"
             />
             <path
               fillRule="evenodd"
               clipRule="evenodd"
               d="M45.0057 19.9263C45.1756 20.8221 45.2649 21.7485 45.2649 22.6983C45.2649 25.915 44.2396 28.8841 42.4975 31.3074L46.9384 34.5001C49.3271 31.1775 50.7344 27.0982 50.7344 22.6983C50.7344 21.4047 50.6127 20.1371 50.3793 18.9069L45.0057 19.9263Z"
-              fill="#F2F4F5"
+              fill="var(--img-fill-in)"
             />
             <path
               fillRule="evenodd"
               clipRule="evenodd"
               d="M31.4196 7.95904C36.5829 8.27745 41.0361 11.2525 43.4183 15.5471C43.8636 16.3499 44.2359 17.198 44.5267 18.0826L49.7227 16.3748C49.3231 15.1592 48.8118 13.9948 48.2011 12.8939C44.9454 7.02467 38.849 2.93733 31.7562 2.49994L31.4196 7.95904Z"
-              fill="#F2F4F5"
+              fill="var(--img-fill-in)"
             />
             <rect
               x="10.5"
@@ -210,7 +217,7 @@ const getDifficultySVG = (grade, small) => {
               width="40"
               height="8"
               rx="4"
-              fill="#EFEFEF"
+              fill="var(--img-fill-in)"
             />
           </svg>
         </div>
@@ -222,9 +229,9 @@ const getDifficultySVG = (grade, small) => {
 
 const CompareCard = ({ name, image, state, difficulty }) => {
   return (
-    <div className="flex flex-row gap-3 w-fit border p-4 rounded-md border-[#8E9EAB]/20 shadow-xs">
+    <div className="flex flex-row gap-3 w-fit border p-4 rounded-md border-calc-bound bg-setting-calc shadow-xs">
       {image === "None" ? (
-        <div className="w-screen max-w-16 h-16 bg-[#F2F4F5] rounded-sm" />
+        <div className="w-screen max-w-16 h-16 bg-img-fill-in rounded-sm" />
       ) : (
         <img
           src={image}
@@ -234,29 +241,32 @@ const CompareCard = ({ name, image, state, difficulty }) => {
       )}
       <div className="min-w-[100px] sm:min-w-[160px] flex flex-col justify-center items-start w-full">
         {name === "None" ? (
-          <div className="w-screen max-w-24 sm:max-w-32 h-3.5 bg-[#F2F4F5] rounded-sm mb-2" />
+          <div className="w-screen max-w-24 sm:max-w-32 h-3.5 bg-img-fill-in rounded-sm mb-2" />
         ) : (
-          <p className="text-sm sm:text-base font-semibold text-[#00393C] text-nowrap">
+          <p className="text-sm sm:text-base font-semibold text-accent-trek text-nowrap">
             {name}
           </p>
         )}
         <div className="flex flex-row gap-1 items-center">
           {state === "None" ? (
-            <div className="w-screen max-w-16 h-3.5 bg-[#F2F4F5] rounded-sm" />
+            <div className="w-screen max-w-16 h-3.5 bg-img-fill-in rounded-sm" />
           ) : (
-            <p className="text-xs sm:text-sm text-gray-500 text-nowrap">
+            <p className="text-xs sm:text-sm text-accent-secondary text-nowrap">
               {state}
             </p>
           )}
         </div>
       </div>
-      <div className="border-r my-1 px-2 border-[#8E9EAB]/50"></div>
+      <div className="border-r my-1 px-2 border-accent-secondary/50"></div>
       {getDifficultySVG(difficulty, true)}
     </div>
   );
 };
 
 const MainPage = () => {
+  const { isDarkMode } = useDarkMode();
+  const logo = isDarkMode ? DarkLogo : LightLogo;
+
   const isMobile = window.innerWidth < 768;
 
   const [unit, setUnit] = useState("metric");
@@ -383,26 +393,29 @@ const MainPage = () => {
           {!isMobile && <Header link={"https://www.scoutripper.com/"} />}
           {isMobile && (
             <div className="w-screen flex items-center justify-between flex-row pt-4 px-4">
-              <img src={Logo} alt="Logo" className="h-10" />
+              <img src={logo} alt="Logo" className="h-10" />
+              <span className="flex items-center gap-4">
+              <DarkModeToggle/>
               <a href={"https://www.scoutripper.com/"} target="_self">
                 <img src={Close} alt="Close" className="h-3 cursor-pointer" />
               </a>
+              </span>
             </div>
           )}
           <div className="max-w-4xl w-full flex flex-col justify-center items-center flex-grow">
             <MotionElement component="h1" delay={0.4} className="font-bold text-2xl sm:text-3xl text-header-main pt-5 pb-2 text-start sm:text-center">
               Check Your BMI & Find the Perfect Trek for You!
             </MotionElement>
-            <MotionElement component="h3" delay={0.45} className="font-normal text-base text-gray-500 pb-4 sm:pb-10 text-start sm:text-center">
+            <MotionElement component="h3" delay={0.45} className="font-normal text-base text-accent-secondary pb-4 sm:pb-10 text-start sm:text-center">
               Explain what BMI is and why it matters for trekking.
             </MotionElement>
-            <MotionElement component="div" delay={0.5} className="w-full flex flex-col sm:flex-row justify-center items-center border border-[#F3F3F3] rounded-md my-4">
+            <MotionElement component="div" delay={0.5} className="bg-setting-calc w-full flex flex-col sm:flex-row justify-center items-center border border-calc-bound rounded-md my-4">
               <div className="w-full sm:w-[55%] flex flex-col justify-center items-center p-6">
-                <div className="w-full flex flex-row justify-center items-center bg-[#85D4D6]/10 rounded-md p-2 mb-5">
+                <div className="w-full flex flex-row justify-center items-center bg-footer-main/9 rounded-md p-2 mb-5">
                   <div
                     className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "metric"
                       ? "bg-footer-main text-white"
-                      : "text-[#8E9EAB]"
+                      : "text-accent-secondary"
                       }`}
                     onClick={() => setUnit("metric")}
                   >
@@ -411,7 +424,7 @@ const MainPage = () => {
                   <div
                     className={`cursor-pointer w-full h-8 bg-primary-main font-semibold text-sm rounded-md flex justify-center items-center ${unit === "imperial"
                       ? "bg-footer-main text-white"
-                      : "text-[#8E9EAB]"
+                      : "text-accent-secondary"
                       }`}
                     onClick={() => setUnit("imperial")}
                   >
@@ -423,18 +436,19 @@ const MainPage = () => {
                     <div className="w-full flex flex-col justify-center items-center gap-3.5">
                       <div className="w-full font-semibold text-sm text-primary-main flex flex-row justify-start items-center gap-2">
                         <div className="bg-footer-main/20 rounded-full p-[2px]">
-                          <img src={Height} alt="Height" className="h-5" />
+                          {/* <img src={Height} alt="Height" className="h-5" /> */}
+                          <Height className="h-5 text-accent-svg"/>
                         </div>
-                        Height
+                        <span className="text-accent-primary">Height</span>
                       </div>
                       <div className="w-full flex flex-row justify-between items-center gap-2">
                         <input
                           type="number"
-                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-[#CCCCCC] rounded-md focus:outline-none focus:border-[#838687]"
+                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-input-bound rounded-md focus:outline-none focus:border-[#838687]"
                           value={heightMetric}
                           onChange={(e) => setHeightMetric(e.target.value)}
                         />
-                        <div className="font-medium text-sm text-[#838687]">
+                        <div className="font-medium text-sm text-accent-secondary">
                           cm
                         </div>
                       </div>
@@ -442,18 +456,19 @@ const MainPage = () => {
                     <div className="w-full flex flex-col justify-center items-center gap-3.5">
                       <div className="w-full font-semibold text-sm text-primary-main flex flex-row justify-start items-center gap-2">
                         <div className="bg-footer-main/20 rounded-full p-[2px]">
-                          <img src={Weight} alt="Weight" className="h-5" />
+                          {/* <img src={Weight} alt="Weight" className="h-5" /> */}
+                          <Weight className="h-5 text-accent-svg"/>
                         </div>
-                        Weight
+                        <span className="text-accent-primary">Weight</span>
                       </div>
                       <div className="w-full flex flex-row justify-between items-center gap-2">
                         <input
                           type="number"
-                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-[#CCCCCC] rounded-md focus:outline-none focus:border-[#838687]"
+                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-input-bound rounded-md focus:outline-none focus:border-[#838687]"
                           value={weight}
                           onChange={(e) => setWeight(e.target.value)}
                         />
-                        <div className="font-medium text-sm text-[#838687]">
+                        <div className="font-medium text-sm text-accent-secondary">
                           kg
                         </div>
                       </div>
@@ -465,7 +480,8 @@ const MainPage = () => {
                     <div className="w-full flex flex-col justify-center items-center gap-3.5">
                       <div className="w-full font-semibold text-sm text-primary-main flex flex-row justify-start items-center gap-2">
                         <div className="bg-footer-main/20 rounded-full p-[2px]">
-                          <img src={Height} alt="Height" className="h-5" />
+                          {/* <img src={Height} alt="Height" className="h-5" /> */}
+                          <Height className="h-5 text-accent-svg"/>
                         </div>
                         Height
                       </div>
@@ -473,26 +489,26 @@ const MainPage = () => {
                         <div className="w-full flex flex-row justify-between items-center">
                           <input
                             type="number"
-                            className="w-[84%] h-10 text-start text-base font-semibold text-header-main px-3 border border-[#CCCCCC] rounded-md focus:outline-none focus:border-[#838687]"
+                            className="w-[84%] h-10 text-start text-base font-semibold text-header-main px-3 border border-input-bound rounded-md focus:outline-none focus:border-[#838687]"
                             value={heightImperialFeet}
                             onChange={(e) =>
                               setHeightImperialFeet(e.target.value)
                             }
                           />
-                          <div className="w-[16%] text-center font-medium text-sm text-[#838687]">
+                          <div className="w-[16%] text-center font-medium text-sm text-accent-secondary">
                             ft
                           </div>
                         </div>
                         <div className="w-full flex flex-row justify-between items-center">
                           <input
                             type="number"
-                            className="w-[84%] h-10 text-start text-base font-semibold text-header-main px-3 border border-[#CCCCCC] rounded-md focus:outline-none focus:border-[#838687]"
+                            className="w-[84%] h-10 text-start text-base font-semibold text-header-main px-3 border border-input-bound rounded-md focus:outline-none focus:border-[#838687]"
                             value={heightImperialInches}
                             onChange={(e) =>
                               setHeightImperialInches(e.target.value)
                             }
                           />
-                          <div className="w-[16%] text-end font-medium text-sm text-[#838687]">
+                          <div className="w-[16%] text-end font-medium text-sm text-accent-secondary">
                             in
                           </div>
                         </div>
@@ -501,18 +517,19 @@ const MainPage = () => {
                     <div className="w-full flex flex-col justify-center items-center gap-3.5">
                       <div className="w-full font-semibold text-sm text-primary-main flex flex-row justify-start items-center gap-2">
                         <div className="bg-footer-main/20 rounded-full p-[2px]">
-                          <img src={Weight} alt="Weight" className="h-5" />
+                          {/* <img src={Weight} alt="Weight" className="h-5" /> */}
+                          <Weight className="h-5 text-accent-svg"/>
                         </div>
                         Weight
                       </div>
                       <div className="w-full flex flex-row justify-between items-center gap-2">
                         <input
                           type="number"
-                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-[#CCCCCC] rounded-md focus:outline-none focus:border-[#838687]"
+                          className="w-[92%] h-10 text-start text-base font-semibold text-header-main px-3 border border-input-bound rounded-md focus:outline-none focus:border-[#838687]"
                           value={weightImperial}
                           onChange={(e) => setWeightImperial(e.target.value)}
                         />
-                        <div className="font-medium text-sm text-[#838687]">
+                        <div className="font-medium text-sm text-accent-secondary">
                           lbs
                         </div>
                       </div>
@@ -520,13 +537,14 @@ const MainPage = () => {
                   </div>
                 )}
               </div>
-              <div className="w-[95%] sm:w-[45%] flex flex-col justify-center items-center gap-1 p-6 border-t sm:border-l sm:border-t-0 border-[#D9D9D9] pt-10 pb-4 sm:pt-0 sm:pb-0 sm:py-3 px-2 sm:px-6">
+              <div className="w-[95%] sm:w-[45%] flex flex-col justify-center items-center gap-1 p-6 border-t sm:border-l sm:border-t-0 border-calc-divider pt-10 pb-4 sm:pt-0 sm:pb-0 sm:py-3 px-2 sm:px-6">
                 <div className="w-full flex flex-row justify-center items-center gap-2">
                   <p className="text-xs font-semibold text-header-main">
                     Your BMI is
                   </p>
                   <div className="p-[2px]">
-                    <img src={Info} alt="Info" className="h-3.5" />
+                    {/* <img src={Info} alt="Info" className="h-3.5 text-accent-secondary" /> */}
+                    <AiOutlineInfoCircle className="text-[15px] text-accent-secondary"/>
                   </div>
                 </div>
                 <div
@@ -561,38 +579,38 @@ const MainPage = () => {
                   }}
                 ></div>
                 <div className="w-full flex flex-row justify-between items-center mt-[2px]">
-                  <p className="text-xs font-normal text-header-main">15</p>
-                  <p className="text-xs font-normal text-header-main">25</p>
-                  <p className="text-xs font-normal text-header-main">30</p>
-                  <p className="text-xs font-normal text-header-main">40+</p>
+                  <p className="text-xs font-normal text-accent-secondary">15</p>
+                  <p className="text-xs font-normal text-accent-secondary">25</p>
+                  <p className="text-xs font-normal text-accent-secondary">30</p>
+                  <p className="text-xs font-normal text-accent-secondary">40+</p>
                 </div>
                 <div className="mt-4 w-full flex flex-row justify-between items-center gap-3.5">
                   <div
-                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
+                    className="w-full flex flex-row justify-center gap-2 items-center bg-setting-primary py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowTips(true)}
                   >
-                    <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">Tips</p>
-                    <LuExpand className="text-[#8E9EAB] h-3" />
+                    <p className="text-xs sm:text-sm font-medium text-accent-secondary">Tips</p>
+                    <LuExpand className="text-accent-secondary h-3" />
                   </div>
                   <div
-                    className="w-full flex flex-row justify-center gap-2 items-center bg-[#F9F9F9] py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
+                    className="w-full flex flex-row justify-center gap-2 items-center bg-setting-primary py-3 sm:py-2 p-2 rounded-sm cursor-pointer"
                     onClick={() => setShowDetails(true)}
                   >
-                    <p className="text-xs sm:text-sm font-medium text-[#8E9EAB]">
+                    <p className="text-xs sm:text-sm font-medium text-accent-secondary">
                       Show more details
                     </p>
-                    <LuExpand className="text-[#8E9EAB] h-3" />
+                    <LuExpand className="text-accent-secondary h-3" />
                   </div>
                 </div>
                 <div className="w-full flex flex-col justify-center items-center mt-4 gap-3">
-                  <p className="text-[10px] font-normal text-[#8E9EAB]">
+                  <p className="text-[11px] font-normal text-accent-secondary">
                     This calculator is for informational purposes only.
                   </p>
                 </div>
               </div>
             </MotionElement>
             <MotionElement component="div" delay={0.55} className="w-full flex flex-col justify-center items-center my-6 gap-6">
-              <div className="font-medium text-base text-gray-500 text-center">
+              <div className="font-medium text-base text-accent-secondary text-center">
                 Calculate BMI to view trek suggestions:
               </div>
               {allSuggestions.length > 0 && (
@@ -631,9 +649,9 @@ const MainPage = () => {
               )}
             </MotionElement>
           </div>
-          <div className="w-full flex flex-row justify-center items-center gap-4 py-6 border-t border-[#D9D9D9] max-w-6xl">
+          <div className="w-full flex flex-row justify-center items-center gap-4 py-6 border-t border-calc-bound max-w-6xl">
             <div
-              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-lg border-footer-main cursor-pointer"
+              className="w-fit flex flex-row justify-center items-center gap-3 px-6 py-3 border rounded-lg border-footer-main bg-setting-button cursor-pointer"
               onClick={() =>
                 window.open("https://www.scoutripper.com/trekgenie/", "_blank")
               }
@@ -644,7 +662,7 @@ const MainPage = () => {
               <img src={Link} alt="Link" className="h-3" />
             </div>
             <div
-              className="w-fit flex flex-row justify-center items-center gap-2 px-6 py-3 border rounded-lg border-footer-main cursor-pointer"
+              className="w-fit flex flex-row justify-center items-center gap-3 px-6 py-3 border rounded-lg border-footer-main bg-setting-button cursor-pointer"
               onClick={() =>
                 window.open("https://scoutripper.com/compare-treks/", "_blank")
               }
@@ -660,8 +678,8 @@ const MainPage = () => {
           </div>
         </div>
         {showDetails && !isMobile && (
-          <div className="fixed top-0 left-0 z-50 w-full h-full bg-[#00393C]/23 flex justify-center items-center">
-            <MotionElement component="div" delay={0.05} duration={0.7} className="w-full max-w-3xl bg-white p-6 rounded-lg">
+          <div className="fixed top-0 left-0 z-50 w-full h-full bg-setting-overlay/23 flex justify-center items-center">
+            <MotionElement component="div" delay={0.05} duration={0.7} className="w-full max-w-3xl bg-setting-modal p-6 rounded-lg">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   What is BMI?
@@ -703,8 +721,8 @@ const MainPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-center items-center mt-6 bg-[#77878F]/5 px-5 py-2 rounded-md border border-[#77878F]">
-                <p className="text-sm font-medium text-[#77878F]/91">
+              <div className="w-full flex justify-center items-center mt-6 bg-setting-note px-5 py-2 rounded-md border border-note-bound">
+                <p className="text-sm font-medium text-accent-secondary">
                   <strong>Note:</strong> BMI has limitations and doesn't account
                   for muscle mass, bone density, or overall body composition.
                   Consult a healthcare professional for a complete health
@@ -715,8 +733,8 @@ const MainPage = () => {
           </div>
         )}
         {showDetails && isMobile && (
-          <div className="fixed inset-0 flex items-end justify-center bg-[#00393C]/23 bg-opacity-50 z-50">
-            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-white p-6 rounded-lg">
+          <div className="fixed inset-0 flex items-end justify-center bg-setting-overlay/23 bg-opacity-50 z-50">
+            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-setting-modal p-6 rounded-lg">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   What is BMI?
@@ -764,8 +782,8 @@ const MainPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-center items-center mt-6 bg-[#77878F]/5 px-5 py-2 rounded-md border border-[#77878F]">
-                <p className="text-sm font-medium text-[#77878F]/91">
+              <div className="w-full flex justify-center items-center mt-6 bg-setting-note px-5 py-2 rounded-md border border-note-bound">
+                <p className="text-sm font-medium text-accent-secondary">
                   <strong>Note:</strong> BMI has limitations and doesn't account
                   for muscle mass, bone density, or overall body composition.
                   Consult a healthcare professional for a complete health
@@ -776,8 +794,8 @@ const MainPage = () => {
           </div>
         )}
         {showTips && !isMobile && (
-          <div className="fixed top-0 left-0 z-50 w-full h-full bg-[#00393C]/23 flex justify-center items-center">
-            <MotionElement component="div" delay={0.05} duration={0.7} className="w-fit max-w-3xl bg-white p-6 rounded-lg ">
+          <div className="fixed top-0 left-0 z-50 w-full h-full bg-setting-overlay/23 flex justify-center items-center">
+            <MotionElement component="div" delay={0.05} duration={0.7} className="w-fit max-w-3xl bg-setting-modal p-6 rounded-lg ">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   Tips To Consider
@@ -872,8 +890,8 @@ const MainPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-center items-center mt-6 bg-[#77878F]/5 px-5 py-2 rounded-md border border-[#77878F]">
-                <p className="text-sm font-medium text-[#77878F]/91">
+              <div className="w-full flex justify-center items-center mt-6 bg-setting-note px-5 py-2 rounded-md border border-note-bound">
+                <p className="text-sm font-medium text-accent-secondary">
                   <strong>Note:</strong> BMI has limitations and doesn't account
                   for muscle mass, bone density, or overall body composition.
                   Consult a healthcare professional for a complete health
@@ -884,8 +902,8 @@ const MainPage = () => {
           </div>
         )}
         {showTips && isMobile && (
-          <div className="fixed inset-0 flex items-end justify-center bg-[#00393C]/23 bg-opacity-50 z-50">
-            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-white p-6 rounded-lg max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 flex items-end justify-center bg-setting-overlay/23 bg-opacity-50 z-50">
+            <MotionElement component="div" delay={0.1} duration={0.5} className="w-full max-w-3xl bg-setting-modal p-6 rounded-lg max-h-[90vh] overflow-y-auto">
               <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-semibold text-header-main">
                   Tips To Consider
@@ -984,8 +1002,8 @@ const MainPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-center items-center mt-6 bg-[#77878F]/5 px-5 py-2 rounded-md border border-[#77878F]">
-                <p className="text-sm font-medium text-[#77878F]/91">
+              <div className="w-full flex justify-center items-center mt-6 bg-setting-note px-5 py-2 rounded-md border border-note-bound">
+                <p className="text-sm font-medium text-accent-secondary">
                   <strong>Note:</strong> BMI has limitations and doesn't account
                   for muscle mass, bone density, or overall body composition.
                   Consult a healthcare professional for a complete health

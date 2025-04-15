@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MainPage from "./pages/MainPage";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 function App() {
   const [isAllowed, setIsAllowed] = useState(null);
@@ -29,7 +30,9 @@ function App() {
   return (
     <div className="App">
       {isAllowed ? (
-        <MainPage />
+        <DarkModeProvider>
+          <MainPage />
+        </DarkModeProvider>
       ) : (
         <div
           className="error-message"

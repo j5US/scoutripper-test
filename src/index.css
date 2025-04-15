@@ -2,11 +2,11 @@
 
 @theme {
   --font-ibm: "IBM Plex Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --color-header-main: #324b4c;
-  --color-footer-main: #4EC5C1;
   /* --color-footer-main: #85d4d6; */
+  /* --color-header-main: #324b4c;
+  --color-footer-main: #4EC5C1;
   --color-footer-hover: #0b58ca;
-  --color-side-line-big: #e1f7f7;
+  --color-side-line-big: #e1f7f7; */
 }
 
 :root {
@@ -32,7 +32,103 @@ html {
   width: 100%;
   height: 100%;
 }
+
 /* 
 * {
   outline: 1px solid #f00 !important;
 } */
+
+.light-mode {
+  background-color: white;
+  color: black;
+  --header-main: #324b4c;
+  --footer-main: #4EC5C1;
+  --side-line-big: #e1f7f7;
+
+  --accent-primary: black;
+  --accent-secondary: #8E9EAB;
+  --accent-svg: #00393C;
+  --accent-trek: #00393C;
+  --accent-footer: black;
+
+  --setting-primary: #F9F9F9;
+  --setting-modal: white;
+  --setting-overlay: #00393C;
+  --setting-calc: white;
+  --setting-button: white;
+  --setting-note: #f8f9f9;
+
+  --img-fill-in: #F2F4F5;
+  --input-bound: #CCCCCC;
+  --calc-bound: #F3F3F3;
+  --note-bound: #77878f;
+
+  --calc-divider: #D9D9D9;
+}
+
+.dark-mode {
+  background-color: #061819;
+  color: white;
+  --header-main: white;
+  --footer-main: #4EC5C1;
+  --side-line-big: #e1f7f7;
+
+  --accent-primary: white;
+  --accent-secondary: #4ec5c19e;
+  --accent-svg: #43b9c0;
+  --accent-trek: #4ec5c1;
+  --accent-footer: #4ec5c19e;
+
+  --setting-primary: #0c3537;
+  --setting-modal: #061819;
+  --setting-overlay: rgb(47, 120, 124);
+  --setting-calc: #052729;
+  --setting-button: #4EC5C1;
+  --setting-note: #052729;
+
+  --img-fill-in: #f3f3f324;
+  --input-bound: #f3f3f324;
+  --calc-bound: #f3f3f324;
+  --note-bound: #f3f3f324;
+
+  --calc-divider: #f3f3f324;
+
+}
+
+@theme inline {
+  --color-header-main: var(--header-main);
+  --color-footer-main: var(--footer-main);
+  --color-side-line-big: var(--side-line-big);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-svg: var(--accent-svg);
+  --color-accent-trek: var(--accent-trek);
+  --color-accent-footer: var(--accent-footer);
+
+  --color-setting-primary: var(--setting-primary);
+  --color-setting-modal: var(--setting-modal);
+  --color-setting-overlay: var(--setting-overlay);
+  --color-setting-calc: var(--setting-calc);
+  --color-setting-button: var(--setting-button);
+  --color-setting-note: var(--setting-note);
+
+  --color-img-fill-in: var(--img-fill-in);
+  --color-input-bound: var(--input-bound);
+  --color-calc-bound: var(--calc-bound);
+  --color-note-bound: var(--note-bound);
+  --color-calc-divider: var(--calc-divider);
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
